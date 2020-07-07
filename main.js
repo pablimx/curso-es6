@@ -1,21 +1,27 @@
-const myArray = [1, 2, 4, 6, 7];
+const array = [1, 3, 4, 5, 6];
 
-const myNewArray = myArray.map(function (item, index) {
-  return item + index;
-});
-console.log(myNewArray);
+// //Default
+// const newArray = array.map(function (item) {
+//   return item * 2;
+// });
 
-const sum = myArray.reduce(function (total, next) {
-  return total + next;
-});
-console.log(sum);
+//Arrow Function Examples
+const newArray = array.map((item) => item * 2);
+console.log(newArray);
 
-const filter = myArray.filter(function (item) {
-  return item % 2 === 0;
-});
-console.log(filter);
+const teste = () => {
+  return "teste";
+};
+//Arrow Function with Array
+const teste2 = () => [1, 2, 3];
 
-const find = myArray.find(function (item) {
-  return item === 2;
-});
-console.log(find);
+//Arrow Function with String
+const teste3 = () => "Teste 3";
+
+//Arrow Function with Object
+const teste4 = () => ({ name: "Teste 4" });
+
+console.log(teste());
+console.log(teste2());
+console.log(teste3());
+console.log(teste4());
