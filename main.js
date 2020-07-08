@@ -1,5 +1,11 @@
-//TEMPLATE LITERALS
-const name = "Pablo";
-const age = "31";
-//console.log("Meu nome é " + name + " e tenho " + age + " anos");
-console.log(`Meu nome é ${name} e tenho ${age} anos.`);
+//Object Short Syntax
+const name = "Ana";
+const age = "50";
+
+const user = {
+  name,
+  age,
+  company: "Cia & Cia",
+};
+
+console.log(user);
