@@ -1,35 +1,59 @@
 "use strict";
 
-//Destructuring
-var person = {
-  name: "João Silva",
-  age: "22",
-  address: {
-    city: "São Paulo",
-    state: "SP"
-  }
-}; // console.log(person);
-// const name = person.name;
-// const age = person.age;
-// const city = person.address.city;
-// console.log(name);
-// console.log(age);
-// console.log(city);
-//IN ES6
-// function showPerson(person) {
-//   console.log(person.name);
-// }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function showPerson(_ref) {
-  var name = _ref.name,
-      age = _ref.age;
-  console.log(name, age);
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+//REST
+var user = {
+  name: "Osvair",
+  age: "50",
+  company: "Cia & Teste"
+};
+
+var name = user.name,
+    others = _objectWithoutProperties(user, ["name"]);
+
+console.log(name);
+console.log(others);
+var array = [1, 2, 3, 4];
+var a = array[0],
+    b = array[1],
+    c = array.slice(2);
+console.log(a);
+console.log(b);
+console.log(c);
+
+function sum() {
+  for (var _len = arguments.length, params = new Array(_len), _key = 0; _key < _len; _key++) {
+    params[_key] = arguments[_key];
+  }
+
+  return params.reduce(function (total, next) {
+    return total + next;
+  });
 }
 
-showPerson(person);
-var name = person.name,
-    age = person.age,
-    city = person.address.city;
-console.log(name);
-console.log(age);
-console.log(city);
+console.log(sum(1, 2, 3, 4)); //SPREAD
+
+var array1 = [1, 2, 3];
+var array2 = [4, 5, 6];
+var array3 = [].concat(array1, array2);
+console.log(array3);
+var user1 = {
+  name: "Osvair",
+  age: "50",
+  company: "Cia & Teste"
+};
+
+var user2 = _objectSpread(_objectSpread({}, user1), {}, {
+  name: "Osvaldo"
+});
+
+console.log(user2);
