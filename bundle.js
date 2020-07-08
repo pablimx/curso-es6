@@ -1,11 +1,35 @@
 "use strict";
 
-//Default values
-var sum = function sum() {
-  var a = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 4;
-  var b = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 5;
-  return a + b;
-};
+//Destructuring
+var person = {
+  name: "João Silva",
+  age: "22",
+  address: {
+    city: "São Paulo",
+    state: "SP"
+  }
+}; // console.log(person);
+// const name = person.name;
+// const age = person.age;
+// const city = person.address.city;
+// console.log(name);
+// console.log(age);
+// console.log(city);
+//IN ES6
+// function showPerson(person) {
+//   console.log(person.name);
+// }
 
-console.log(sum(1));
-console.log(sum());
+function showPerson(_ref) {
+  var name = _ref.name,
+      age = _ref.age;
+  console.log(name, age);
+}
+
+showPerson(person);
+var name = person.name,
+    age = person.age,
+    city = person.address.city;
+console.log(name);
+console.log(age);
+console.log(city);
