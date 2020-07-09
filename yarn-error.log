@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/bin/node /usr/bin/yarn add babel-loader
+  /usr/bin/node /usr/bin/yarn add webpack-dev-server-D
 
 PATH: 
-  /home/pablo/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/pablo/.dotnet/tools
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
 
 Yarn version: 
   1.22.4
@@ -14,7 +14,17 @@ Platform:
   linux x64
 
 Trace: 
-  Error: EACCES: permission denied, unlink '/home/pablo/CURSOJS/01 - Starter/02 - Curso Javascript ES6/curso-es6/node_modules/.yarn-integrity'
+  Error: https://registry.yarnpkg.com/webpack-dev-server-D: Not found
+      at Request.params.callback [as _callback] (/usr/lib/node_modules/yarn/lib/cli.js:66987:18)
+      at Request.self.callback (/usr/lib/node_modules/yarn/lib/cli.js:140748:22)
+      at Request.emit (events.js:315:20)
+      at Request.<anonymous> (/usr/lib/node_modules/yarn/lib/cli.js:141720:10)
+      at Request.emit (events.js:315:20)
+      at IncomingMessage.<anonymous> (/usr/lib/node_modules/yarn/lib/cli.js:141642:12)
+      at Object.onceWrapper (events.js:421:28)
+      at IncomingMessage.emit (events.js:327:22)
+      at endReadableNT (_stream_readable.js:1221:12)
+      at processTicksAndRejections (internal/process/task_queues.js:84:21)
 
 npm manifest: 
   {
@@ -27,11 +37,12 @@ npm manifest:
       "@babel/core": "^7.10.4",
       "@babel/plugin-proposal-object-rest-spread": "^7.10.4",
       "@babel/preset-env": "^7.10.4",
+      "babel-loader": "^8.1.0",
       "webpack": "^4.43.0",
       "webpack-cli": "^3.3.12"
     },
     "scripts": {
-      "dev": "babel  ./main.js -o ./bundle.js -w"
+      "dev": "webpack --mode=development -w"
     }
   }
 
@@ -846,6 +857,11 @@ Lockfile:
       lodash "^4.17.13"
       to-fast-properties "^2.0.0"
   
+  "@types/json-schema@^7.0.4":
+    version "7.0.5"
+    resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.5.tgz#dcce4430e64b443ba8945f0290fb564ad5bac6dd"
+    integrity sha512-7+2BITlgjgDhH0vvwZU/HZJVyk+2XUlvxXe8dFMedNX/aMkaOq++rMAFXc0tM7ij15QaWlbdQASBR9dihi+bDQ==
+  
   "@webassemblyjs/ast@1.9.0":
     version "1.9.0"
     resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.9.0.tgz#bd850604b4042459a5a41cd7d338cbed695ed964"
@@ -1016,7 +1032,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.5.1.tgz#b83ca89c5d42d69031f424cad49aada0236c6957"
     integrity sha512-KWcq3xN8fDjSB+IMoh2VaXVhRI0BBGxoYp3rx7Pkb6z0cFjYR9Q9l4yZqqals0/zsioCmocC5H6UvsGD4MoIBA==
   
-  ajv@^6.1.0, ajv@^6.10.2:
+  ajv@^6.1.0, ajv@^6.10.2, ajv@^6.12.2:
     version "6.12.3"
     resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.12.3.tgz#18c5af38a111ddeb4f2697bd78d68abc1cabd706"
     integrity sha512-4K0cK3L1hsqk9xIb2z9vs/XU+PGJZ9PNpJRDS9YLzmNdX6jmVPfamLvTJr0aDAusnHyCHO6MjzlkAsgtqp9teA==
@@ -1110,6 +1126,17 @@ Lockfile:
     version "2.1.2"
     resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
     integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
+  
+  babel-loader@^8.1.0:
+    version "8.1.0"
+    resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.1.0.tgz#c611d5112bd5209abe8b9fa84c3e4da25275f1c3"
+    integrity sha512-7q7nC1tYOrqvUrN3LQK4GwSk/TQorZSOlO9C+RZDZpODgyN4ZlCqE5q9cDsyWOliN+aU9B4JX01xK9eJXowJLw==
+    dependencies:
+      find-cache-dir "^2.1.0"
+      loader-utils "^1.4.0"
+      mkdirp "^0.5.3"
+      pify "^4.0.1"
+      schema-utils "^2.6.5"
   
   babel-plugin-dynamic-import-node@^2.3.3:
     version "2.3.3"
@@ -3171,6 +3198,15 @@ Lockfile:
       ajv "^6.1.0"
       ajv-errors "^1.0.0"
       ajv-keywords "^3.1.0"
+  
+  schema-utils@^2.6.5:
+    version "2.7.0"
+    resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-2.7.0.tgz#17151f76d8eae67fbbf77960c33c676ad9f4efc7"
+    integrity sha512-0ilKFI6QQF5nxDZLFn2dMjvc4hjg/Wkg7rHd3jK6/A4a1Hl9VFdQWvgB1UMGoU94pad1P/8N7fMcEnLnSiju8A==
+    dependencies:
+      "@types/json-schema" "^7.0.4"
+      ajv "^6.12.2"
+      ajv-keywords "^3.4.1"
   
   semver@7.0.0:
     version "7.0.0"
